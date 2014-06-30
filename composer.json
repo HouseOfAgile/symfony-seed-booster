@@ -1,8 +1,18 @@
 {
-    "name": "symfony/framework-standard-edition",
+    "name": "houseofagile/symfony-seed-booster",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Jean-Christophe Meillaud",
+            "homepage": "http://www.houseofagile.com"
+        },
+        {
+            "name": "Community contributions",
+            "homepage": "http://github.com/HouseOfAgile/symfony-seed-booster/contributors"
+        }
+        ],
     "type": "project",
-    "description": "The \"Symfony Standard Edition\" distribution",
+    "description": "The \"Symfony Seed Booster Edition\" distribution",
     "autoload": {
         "psr-0": { "": "src/", "SymfonyStandard": "app/" }
     },
@@ -17,7 +27,15 @@
         "symfony/monolog-bundle": "~2.4",
         "sensio/distribution-bundle": "~3.0",
         "sensio/framework-extra-bundle": "~3.0",
-        "incenteev/composer-parameter-handler": "~2.0"
+        "incenteev/composer-parameter-handler": "~2.0",
+        "doctrine/doctrine-fixtures-bundle": "2.1.*@dev",
+
+        "dacorp/extra-bundle": "dev-master",
+        "knplabs/knp-menu": "dev-master as 1.1",
+        "knplabs/knp-menu-bundle": "dev-master as 1.1",
+        "jms/serializer-bundle": "dev-master as 0.12.0",
+        "jms/translation-bundle": "1.1.*",
+        "vipsoft/doctrine-data-fixtures-extension": "*"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
@@ -28,6 +46,7 @@
         ],
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Mopa\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::postInstallSymlinkTwitterBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
@@ -36,6 +55,7 @@
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Mopa\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::postInstallSymlinkTwitterBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
@@ -46,6 +66,7 @@
     "config": {
         "bin-dir": "bin"
     },
+    "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-bin-dir": "bin",
