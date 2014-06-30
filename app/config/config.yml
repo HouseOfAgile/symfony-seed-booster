@@ -1,6 +1,9 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: @DacorpExtraBundle/Resources/config/config.yml }
+    - { resource: @DacorpExtraBundle/Resources/config/services_twig.yml }
+    - { resource: @DacorpExtraBundle/Resources/config/services_helper.yml }
 
 parameters:
     available_langs:
