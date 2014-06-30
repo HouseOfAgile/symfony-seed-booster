@@ -17,3 +17,12 @@ parameters:
     debug_toolbar:          true
     debug_redirects:        false
     use_assetic_controller: true
+
+    application_name:  Some Project
+    main_domain: "someproject.houseofagile.com"
+    version:           "0.9"
+    facebook_app_id: 240448882782199
+
+    #twitter account and widget
+    twitter_widget_id: TOBECHANGED
+    twitter_default_account: houseofagile

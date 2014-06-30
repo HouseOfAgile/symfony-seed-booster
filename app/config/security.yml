@@ -17,22 +17,34 @@ security:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
-        demo_login:
-            pattern:  ^/demo/secured/login$
-            security: false
-
-        demo_secured_area:
-            pattern:    ^/demo/secured/
+        main:
+            pattern: ^/
             form_login:
-                check_path: _demo_security_check
-                login_path: _demo_login
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+                login_path:  /login
+                check_path:  /login_check
+                default_target_path: /
+                # by default, a session must exist before submitting an authentication request
+                # if false, then Request::hasPreviousSession is not called during authentication
+                # new in Symfony 2.3
+                require_previous_session: false
+            anonymous:    true
             logout:
-                path:   _demo_logout
-                target: _demo
+                path: /logout
+                target: /
+                invalidate_session: false
+            remember_me:
+                key:      "%secret%"
+                lifetime: 31536000 # 365 days in seconds
+                path:     /
+                domain:   ~
+
             #anonymous: ~
             #http_basic:
             #    realm: "Secured Demo Area"
 
     access_control:
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+         - { path: ^/admin/, role: ROLE_ADMIN }
+         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }

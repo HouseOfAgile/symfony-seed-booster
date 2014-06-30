@@ -2,6 +2,11 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
 
+parameters:
+    available_langs:
+        - de
+        - fr
+        - en
 framework:
     #esi:             ~
     translator:
@@ -30,6 +35,17 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        # global name of the application, ouput in twig {{application_name}}
+        main_domain: %main_domain%
+        application_name: %application_name%
+        version:          %version%
+        available_langs:  %available_langs%
+        fos_csrf_provider: "@form.csrf_provider"
+        facebook_app_id: %facebook_app_id%
+        twitter_widget_id: %twitter_widget_id%
+        twitter_default_account: %twitter_default_account%
+
 
 # Assetic Configuration
 assetic:
@@ -43,6 +59,10 @@ assetic:
         #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
         #yui_css:
         #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+        yui_css:
+            jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+        yui_js:
+            jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
 
 # Doctrine Configuration
 doctrine:
@@ -61,11 +81,69 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+        entity_managers:
+            default:
+                auto_mapping: true
+                dql:
+                    numeric_functions:
+                        rand:        Mapado\MysqlDoctrineFunctions\DQL\MysqlRand
+                        round:       Mapado\MysqlDoctrineFunctions\DQL\MysqlRound
+                    datetime_functions:
+                        date:        Mapado\MysqlDoctrineFunctions\DQL\MysqlDate
+                        date_format: Mapado\MysqlDoctrineFunctions\DQL\MysqlDateFormat
+                mappings:
+                    gedmo_translatable:
+                        type: annotation
+                        prefix: Gedmo\Translatable\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+                        alias: GedmoTranslatable # this one is optional and will default to the name set for the mapping
+                        is_bundle: false
+                    gedmo_translator:
+                        type: annotation
+                        prefix: Gedmo\Translator\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translator/Entity"
+                        alias: GedmoTranslator # this one is optional and will default to the name set for the mapping
+                        is_bundle: false
 
 # Swiftmailer Configuration
 swiftmailer:
+    encryption: ssl
+    auth_mode:  login
     transport: "%mailer_transport%"
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+
+sensio_framework_extra:
+    view:    { annotations: false }
+    router:  { annotations: true }
+
+#fos_user:
+    # Overwrite user class
+#    user_class: SomeBundle\BackBundle\Entity\User
+
+mopa_bootstrap:
+    form:
+        templating: JustmoovFrontBundle:Form:fields.html.twig
+        show_legend: false # default is true
+        show_child_legend: false # default is true
+        error_type: 'inline'
+        checkbox_label: widget
+    menu: ~
+    initializr:
+        meta:
+            title:        "Justmoov"
+            description:  "Restaurants, Bars, Théatres"
+            keywords:     "restaurants, bars, théatres"
+            author_name:  "darulez"
+            author_url:   "/human.txt"
+            nofollow:     false
+            noindex:      false
+        dns_prefetch:
+              - '//ajax.googleapis.com'
+        google:
+            wt: 'xxx'
+            analytics: 'UA-40532999-1'
+        diagnostic_mode: false
