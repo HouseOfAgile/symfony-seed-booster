@@ -83,7 +83,6 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: true
         entity_managers:
             default:
                 auto_mapping: true
@@ -123,13 +122,18 @@ sensio_framework_extra:
     view:    { annotations: false }
     router:  { annotations: true }
 
-#fos_user:
+fos_user:
     # Overwrite user class
 #    user_class: SomeBundle\BackBundle\Entity\User
+    firewall_name: main
+    # user class should be defined in the main app config file
+    user_class: Dacorp\ExtraBundle\Entity\User
+
+    service: ~
 
 mopa_bootstrap:
     form:
-        templating: JustmoovFrontBundle:Form:fields.html.twig
+        templating: DacorpExtraBundle:Form:fields.html.twig
         show_legend: false # default is true
         show_child_legend: false # default is true
         error_type: 'inline'

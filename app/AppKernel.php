@@ -16,6 +16,26 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new JMS\AopBundle\JMSAopBundle(),
+            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
+            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+            /** DACORP CORE BUNDLE **/
+            /** Needed if we want to overwrite configuration**/
+            new Dacorp\ExtraBundle\DacorpExtraBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new PunkAve\FileUploaderBundle\PunkAveFileUploaderBundle(),
+            new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
+            new Problematic\AclManagerBundle\ProblematicAclManagerBundle(),
+            new Genemu\Bundle\FormBundle\GenemuFormBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle($this),
+            new FOS\UserBundle\FOSUserBundle(),
+            new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
+            new Mremi\ContactBundle\MremiContactBundle(),
+
+            new JMS\TranslationBundle\JMSTranslationBundle(),
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
