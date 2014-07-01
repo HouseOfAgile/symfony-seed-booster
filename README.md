@@ -44,4 +44,6 @@ It comes pre-configured with the following bundles from Symfony Standard edition
 
   * **SensioGeneratorBundle** (in dev/test env) - Adds code generation capabilities
 
-###Extra Bundles
+###Extra Core Bundles
+
+  * **DacorpExtraBundle** - Adds many common services and helpers ([see bundle definition in readme](https://github.com/HouseOfAgile/dacorp-extra-bundle)
