@@ -141,10 +141,10 @@ mopa_bootstrap:
     menu: ~
     initializr:
         meta:
-            title:        "Justmoov"
-            description:  "Restaurants, Bars, Théatres"
-            keywords:     "restaurants, bars, théatres"
-            author_name:  "darulez"
+            title:        "SomeProject"
+            description:  "Some Description"
+            keywords:     "Some Keywords"
+            author_name:  "HouseOfAgile"
             author_url:   "/human.txt"
             nofollow:     false
             noindex:      false
@@ -152,5 +152,5 @@ mopa_bootstrap:
               - '//ajax.googleapis.com'
         google:
             wt: 'xxx'
-            analytics: 'UA-40532999-1'
+            analytics: 'UA-TOBEDEFINED-1'
         diagnostic_mode: false
