@@ -1,0 +1,8 @@
+darank_web:
+    resource: "@DarankWebBundle/Resources/config/routing.yml"
+    prefix:   /
+
+darank_core:
+    resource: "@DarankCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
