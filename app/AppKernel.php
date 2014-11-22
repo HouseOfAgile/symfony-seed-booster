@@ -32,8 +32,6 @@ class AppKernel extends Kernel
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle($this),
             new FOS\UserBundle\FOSUserBundle(),
-            new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
-            new Mremi\ContactBundle\MremiContactBundle(),
 
             new JMS\TranslationBundle\JMSTranslationBundle(),
 
